@@ -1,862 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="hr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dry Field Solutions — Intelligent systems for industry</title>
-  <meta name="description" content="Dry Field Solutions develops AI-driven industrial solutions: edge analytics, optimization, automation, and robust deployments." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dry Field Solutions | AI & Energetska rješenja</title>
+    <meta name="description" content="AI rješenja, industrijska optimizacija i energetska tranzicija.">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            color: #333;
+        }
 
-  <style>
-    :root{
-      --bg:#070A12;
-      --panel:#0B1022;
-      --panel2:#0A0F1F;
-      --text:#EAF0FF;
-      --muted:rgba(234,240,255,.72);
-      --muted2:rgba(234,240,255,.55);
-      --line:rgba(234,240,255,.10);
-      --line2:rgba(234,240,255,.14);
-      --accent:#7C5CFF;
-      --accent2:#3BE7FF;
-      --shadow: 0 20px 60px rgba(0,0,0,.45);
-      --radius:18px;
-      --radius2:24px;
-      --max:1140px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
+        header {
+            background: #0a192f;
+            color: white;
+            padding: 20px 40px;
+        }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--font);
-      background:
-        radial-gradient(900px 420px at 18% -10%, rgba(124,92,255,.28), transparent 60%),
-        radial-gradient(800px 420px at 70% 0%, rgba(59,231,255,.14), transparent 55%),
-        radial-gradient(900px 520px at 50% 120%, rgba(124,92,255,.12), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    a{color:inherit; text-decoration:none}
-    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+        }
 
-    /* Top nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,10,18,.85), rgba(7,10,18,.55));
-      border-bottom:1px solid var(--line);
-    }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:18px;
-    }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .logo{
-      width:34px; height:34px; border-radius:12px;
-      background:
-        radial-gradient(10px 10px at 30% 30%, rgba(255,255,255,.9), transparent 60%),
-        linear-gradient(135deg, rgba(124,92,255,1), rgba(59,231,255,1));
-      box-shadow: 0 10px 28px rgba(124,92,255,.22);
-    }
-    .menu{display:flex; align-items:center; gap:18px; color:var(--muted)}
-    .menu a{font-size:14px; padding:10px 8px; border-radius:12px}
-    .menu a:hover{background:rgba(234,240,255,.06); color:var(--text)}
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
 
-    .nav-actions{display:flex; align-items:center; gap:10px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:8px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--line2);
-      background:rgba(234,240,255,.04);
-      color:var(--text);
-      font-size:14px;
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:hover{transform: translateY(-1px); background:rgba(234,240,255,.07); border-color:rgba(234,240,255,.20)}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(59,231,255,.85));
-      border-color: transparent;
-      color: #071018;
-      font-weight:700;
-    }
-    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
+        .hero {
+            background: linear-gradient(to right, #0a192f, #112240);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+        }
 
-    /* Hero */
-    .hero{padding:66px 0 34px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:28px;
-      align-items:stretch;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(124,92,255,.16);
-    }
-    h1{
-      margin:16px 0 10px;
-      font-size: clamp(34px, 4vw, 56px);
-      line-height:1.02;
-      letter-spacing:-.6px;
-    }
-    .lead{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.55;
-      max-width: 56ch;
-    }
-    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
-    .mini-note{margin-top:12px; color:var(--muted2); font-size:13px}
+        .section {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: auto;
+        }
 
-    .hero-card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(11,16,34,.78), rgba(11,16,34,.52));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding:18px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(380px 220px at 20% 20%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(380px 220px at 80% 30%, rgba(59,231,255,.14), transparent 60%);
-      pointer-events:none;
-    }
-    .hero-card > *{position:relative}
-    .hero-metrics{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:10px;
-    }
-    .metric{
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      border-radius:16px;
-      padding:12px;
-    }
-    .metric .v{font-size:20px; font-weight:800}
-    .metric .k{color:var(--muted2); font-size:12px; margin-top:4px}
-    .spark{
-      height:140px; border-radius:16px;
-      border:1px solid var(--line);
-      background:
-        linear-gradient(180deg, rgba(234,240,255,.06), rgba(234,240,255,.02)),
-        radial-gradient(260px 120px at 30% 35%, rgba(124,92,255,.18), transparent 60%),
-        radial-gradient(220px 120px at 70% 60%, rgba(59,231,255,.12), transparent 60%);
-      margin-top:12px;
-      position:relative;
-      overflow:hidden;
-    }
-    .spark::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
-      transform: translateX(-60%);
-      animation: shine 3.2s ease-in-out infinite;
-      opacity:.8;
-    }
-    @keyframes shine{
-      0%{transform: translateX(-60%)}
-      55%{transform: translateX(140%)}
-      100%{transform: translateX(140%)}
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
 
-    /* Sections */
-    section{padding:56px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:16px; margin-bottom:18px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size: clamp(22px, 2.4vw, 32px);
-      letter-spacing:-.3px;
-    }
-    .section-head p{margin:0; color:var(--muted); max-width:72ch; line-height:1.6}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-      white-space:nowrap;
-    }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
 
-    .grid-4{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:14px;
-    }
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(10,15,31,.75), rgba(10,15,31,.45));
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.35);
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      min-height: 140px;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(234,240,255,.22);
-      background: linear-gradient(180deg, rgba(10,15,31,.85), rgba(10,15,31,.55));
-    }
-    .card .icon{
-      width:38px; height:38px; border-radius:14px;
-      border:1px solid var(--line2);
-      background:
-        radial-gradient(12px 12px at 30% 30%, rgba(255,255,255,.75), transparent 60%),
-        linear-gradient(135deg, rgba(124,92,255,.8), rgba(59,231,255,.6));
-      margin-bottom:10px;
-    }
-    .card h3{margin:0 0 8px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.55}
+        footer {
+            background: #0a192f;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
 
-    /* Highlight blocks */
-    .highlight{
-      border:1px solid var(--line);
-      border-radius: var(--radius2);
-      background:
-        radial-gradient(900px 340px at 20% 0%, rgba(124,92,255,.16), transparent 55%),
-        radial-gradient(800px 320px at 80% 0%, rgba(59,231,255,.10), transparent 55%),
-        linear-gradient(180deg, rgba(11,16,34,.8), rgba(11,16,34,.45));
-      box-shadow: var(--shadow);
-      padding:22px;
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:18px;
-      overflow:hidden;
-    }
-    .highlight h3{margin:0 0 8px; font-size:18px}
-    .highlight p{margin:0; color:var(--muted); line-height:1.6}
-    .highlight .mock{
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      border-radius:18px;
-      min-height:180px;
-      position:relative;
-      overflow:hidden;
-    }
-    .mock::before{
-      content:"";
-      position:absolute; inset:-40px;
-      background:
-        radial-gradient(220px 140px at 30% 35%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(220px 140px at 70% 60%, rgba(59,231,255,.14), transparent 60%);
-      transform: rotate(-6deg);
-    }
-    .mock::after{
-      content:"Deployment-ready • Edge • Cloud • OT";
-      position:absolute; left:14px; bottom:14px;
-      color:rgba(234,240,255,.72);
-      font-size:13px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(7,10,18,.35);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Missions */
-    .missions{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-    }
-    .mission{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(234,240,255,.03);
-      padding:16px;
-    }
-    .mission h4{margin:0 0 8px}
-    .kv{
-      display:grid;
-      grid-template-columns: 120px 1fr;
-      gap:8px 12px;
-      margin-top:10px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-    .kv b{color:var(--text); font-weight:700}
-    .status{
-      display:inline-flex; align-items:center; gap:8px;
-      margin-top:12px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      font-size:13px;
-      color:var(--muted);
-    }
-    .status .s-dot{width:8px;height:8px;border-radius:999px;background:rgba(59,231,255,.9)}
-    .status.dev .s-dot{background:rgba(124,92,255,.9)}
-
-    /* Trusted by */
-    .logos{
-      display:grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap:12px;
-      opacity:.92;
-    }
-    .logo-tile{
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.02);
-      border-radius:16px;
-      height:56px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:rgba(234,240,255,.55);
-      font-size:13px;
-      letter-spacing:.3px;
-    }
-
-    /* Stats */
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:14px;
-      margin-top:14px;
-    }
-    .stat{
-      border:1px solid var(--line);
-      background:rgba(234,240,255,.03);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .stat .n{font-size:28px; font-weight:900; letter-spacing:-.4px}
-    .stat .t{color:var(--muted2); margin-top:6px; font-size:13px}
-
-    /* Blog */
-    .posts{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      margin-top:14px;
-    }
-    .post{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(10,15,31,.75), rgba(10,15,31,.45));
-      overflow:hidden;
-    }
-    .thumb{
-      height:160px;
-      background:
-        radial-gradient(260px 140px at 30% 35%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(240px 140px at 70% 60%, rgba(59,231,255,.14), transparent 60%),
-        linear-gradient(180deg, rgba(234,240,255,.06), rgba(234,240,255,.02));
-      border-bottom:1px solid var(--line);
-    }
-    .post-body{padding:14px}
-    .post h4{margin:0 0 6px}
-    .meta{color:var(--muted2); font-size:13px}
-    .post p{margin:10px 0 0; color:var(--muted); line-height:1.55; font-size:14px}
-    .side{
-      display:grid;
-      gap:14px;
-    }
-    .event{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:rgba(234,240,255,.03);
-      padding:14px;
-    }
-    .event b{display:block; margin-bottom:6px}
-    .event span{color:var(--muted); font-size:13px}
-
-    /* Footer */
-    footer{
-      border-top:1px solid var(--line);
-      background: rgba(7,10,18,.55);
-      padding:34px 0 28px;
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap:18px;
-      align-items:start;
-    }
-    .footer-grid h5{margin:0 0 10px}
-    .footer-grid a{display:block; color:var(--muted); padding:6px 0; font-size:14px}
-    .footer-grid a:hover{color:var(--text)}
-    .small{color:var(--muted2); font-size:13px; line-height:1.55}
-    .newsletter{
-      display:flex; gap:10px; margin-top:10px;
-    }
-    input{
-      width:100%;
-      background:rgba(234,240,255,.04);
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:10px 12px;
-      color:var(--text);
-      outline:none;
-    }
-    input::placeholder{color:rgba(234,240,255,.45)}
-    .footer-bottom{
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
-      color:var(--muted2); font-size:13px;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns: 1fr}
-      .highlight{grid-template-columns:1fr}
-      .grid-4{grid-template-columns: repeat(2, 1fr)}
-      .grid-3{grid-template-columns: repeat(2, 1fr)}
-      .missions{grid-template-columns:1fr}
-      .logos{grid-template-columns: repeat(3, 1fr)}
-      .posts{grid-template-columns:1fr}
-      .footer-grid{grid-template-columns:1fr}
-      .menu{display:none}
-    }
-    @media (max-width: 520px){
-      .grid-4,.grid-3{grid-template-columns:1fr}
-      .hero{padding-top:48px}
-    }
-  </style>
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #00bfa6;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#top" aria-label="Dry Field Solutions">
-        <span class="logo" aria-hidden="true"></span>
-        <span>Dry Field Solutions</span>
-      </a>
 
-      <nav class="menu" aria-label="Primary">
-        <a href="#products">Proizvodi</a>
-        <a href="#solutions">Rješenja</a>
-        <a href="#lab">R&amp;D Lab</a>
-        <a href="#resources">Resursi</a>
-        <a href="#contact">Kontakt</a>
-      </nav>
+<header>
+    <nav>
+        <h2>Dry Field Solutions</h2>
+        <ul>
+            <li><a href="#about">O nama</a></li>
+            <li><a href="#services">Usluge</a></li>
+            <li><a href="#projects">Projekti</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+</header>
 
-      <div class="nav-actions">
-        <a class="btn" href="#contact">Zatraži demo</a>
-        <a class="btn primary" href="#products">Pogledaj proizvode</a>
-      </div>
+<section class="hero">
+    <h1>AI i Energetska Rješenja za Industriju</h1>
+    <p>Digitalna transformacija • Optimizacija energije • Inteligentni sustavi</p>
+    <a href="#contact" class="btn">Zatraži konzultacije</a>
+</section>
+
+<section id="about" class="section">
+    <h2>O nama</h2>
+    <p>
+        Dry Field Solutions razvija napredna AI rješenja za industriju, 
+        optimizaciju energetskih sustava i digitalnu tranziciju poduzeća.
+    </p>
+</section>
+
+<section id="services" class="section">
+    <h2>Usluge</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>AI Sustavi</h3>
+            <p>Razvoj prilagođenih modela strojnog učenja i automatizacije.</p>
+        </div>
+
+        <div class="card">
+            <h3>Energetska Optimizacija</h3>
+            <p>Optimizacija solarnih sustava, baterijskih spremnika i potrošnje.</p>
+        </div>
+
+        <div class="card">
+            <h3>Industrijska Automatizacija</h3>
+            <p>Implementacija IoT i pametnih kontrolnih sustava.</p>
+        </div>
     </div>
-  </div>
+</section>
 
-  <!-- HERO -->
-  <main id="top" class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="kicker"><span class="dot"></span> AI & automatizacija za industriju i energetiku</div>
+<section id="projects" class="section">
+    <h2>Projekti</h2>
+    <p>
+        AI modeli.
+    </p>
+</section>
 
-        <h1>Omogućujemo autonomne, učinkovite i pouzdane procese — u industriji i “na terenu”.</h1>
-        <p class="lead">
-          Razvijamo full-stack rješenja: od prikupljanja podataka i edge inferencije, preko optimizacije energije i održavanja,
-          do integracije s OT/IT sustavima (SCADA, PLC, MES, ERP).
-        </p>
+<section id="contact" class="section">
+    <h2>Kontakt</h2>
+    <p><strong>Dry Field Solutions j.d.o.o.</strong></p>
+    <p>Kralja Tomislava 33, 33410 Suhopolje</p>
+    <p>Email: dryfieldsolutions@gmail.com</p>
+    <p>Tel: 098 792 122</p>
+</section>
 
-        <div class="hero-actions">
-          <a class="btn primary" href="#solutions">Industrijska rješenja</a>
-          <a class="btn" href="#lab">R&amp;D Lab</a>
-        </div>
-        <div class="mini-note">Brza implementacija • Mjerljivi KPI • Deployment-ready (edge/cloud) • Sigurnost & pouzdanost</div>
-      </div>
+<footer>
+    © 2026 Dry Field Solutions | Sva prava pridržana
+</footer>
 
-      <aside class="hero-card" aria-label="Highlights">
-        <div class="pill">Operativna inteligencija u realnom vremenu</div>
-
-        <div class="spark" aria-hidden="true"></div>
-
-        <div class="hero-metrics">
-          <div class="metric">
-            <div class="v">+15%</div>
-            <div class="k">tipično smanjenje potrošnje / gubitaka</div>
-          </div>
-          <div class="metric">
-            <div class="v">≤ 60 ms</div>
-            <div class="k">edge inferencija (ovisno o HW)</div>
-          </div>
-          <div class="metric">
-            <div class="v">24/7</div>
-            <div class="k">monitoring & alarmiranje</div>
-          </div>
-          <div class="metric">
-            <div class="v">ISO-ready</div>
-            <div class="k">prakse za audit i traceability</div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </main>
-
-  <!-- PRODUCTS -->
-  <section id="products">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Proizvodi</h2>
-          <p>
-            Gradimo “full stack” obrade podataka — od senzora i vizije do inferencije i optimizacije.
-            Modularno, pouzdano, skalabilno.
-          </p>
-        </div>
-        <div class="pill">Edge • Cloud • OT integracija</div>
-      </div>
-
-      <div class="grid-4">
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Vision Analytics</h3>
-          <p>Detekcija/segmentacija u proizvodnji: kvaliteta, sigurnost, brojenje, OEE signali.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Predictive Maintenance</h3>
-          <p>Rano otkrivanje kvarova: vibracije, struja, temperatura, anomalije i trendovi.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Energy Optimizer</h3>
-          <p>Optimizacija potrošnje, peak shaving, PV integracija, planiranje i izvještavanje.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Edge Runtime</h3>
-          <p>Standardiziran deployment: containeri, health checks, OTA, audit log, telemetry.</p>
-        </article>
-      </div>
-
-      <div style="height:16px"></div>
-
-      <div class="highlight">
-        <div>
-          <h3>On-site inteligencija koja smanjuje troškove i povećava pouzdanost.</h3>
-          <p>
-            Podaci se obrađuju gdje nastaju (na stroju / u pogonu), smanjuje se latencija i ovisnost o mreži,
-            a kritične odluke postaju brže i robusnije.
-          </p>
-          <div style="height:14px"></div>
-          <a class="btn primary" href="#contact">Dogovori konzultacije</a>
-          <a class="btn" href="#resources" style="margin-left:8px">Pogledaj resurse</a>
-        </div>
-
-        <div class="mock" aria-hidden="true"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOLUTIONS -->
-  <section id="solutions">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Rješenja</h2>
-          <p>
-            Fokus na “mission-critical” industrijske primjene: robustan rad, jasni KPI-evi, sigurnosne i operativne prakse.
-          </p>
-        </div>
-        <div class="pill">Od PoC do produkcije</div>
-      </div>
-
-      <div class="grid-3">
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Industrijska vizija</h3>
-          <p>Kontrola kvalitete, otkrivanje grešaka, praćenje linije, sigurnosne zone.</p>
-        </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Energetska optimizacija</h3>
-          <p>Profiliranje potrošnje, optimiranje ciklusa, integracija PV/baterija, izvještaji.</p>
-        </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true"></div>
-          <h3>Integracije (OT/IT)</h3>
-          <p>SCADA/PLC/MES/ERP konektori, OPC UA/Modbus, data lake, API gateway.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- MISSIONS / PROJECTS (analogno “Space Missions”) -->
-  <section>
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Projekti</h2>
-          <p>Primjeri implementacija i roadmap inicijativa (zamijeni stvarnim referencama kad ih objaviš).</p>
-        </div>
-        <div class="pill">Case studies</div>
-      </div>
-
-      <div class="missions">
-        <div class="mission">
-          <h4>Edge Vision QA</h4>
-          <div class="kv">
-            <b>Industrija</b><span>Diskretna proizvodnja</span>
-            <b>Payload</b><span>Modeli za detekciju i segmentaciju + dashboard</span>
-            <b>Cilj</b><span>Smanjiti škart i povećati OEE kroz real-time signalizaciju</span>
-          </div>
-          <div class="status"><span class="s-dot"></span> Status: Isporučeno</div>
-        </div>
-
-        <div class="mission">
-          <h4>Energy Optimizer Pilot</h4>
-          <div class="kv">
-            <b>Industrija</b><span>Procesna industrija</span>
-            <b>Payload</b><span>Optimizacija potrošnje + peak shaving strategije</span>
-            <b>Cilj</b><span>Stabilizirati vršna opterećenja i smanjiti trošak energije</span>
-          </div>
-          <div class="status dev"><span class="s-dot"></span> Status: U razvoju</div>
-        </div>
-
-        <div class="mission">
-          <h4>Predictive Maintenance</h4>
-          <div class="kv">
-            <b>Industrija</b><span>Rotacijska oprema</span>
-            <b>Payload</b><span>Anomaly detection + preporuke održavanja</span>
-            <b>Cilj</b><span>Smanjiti neplanirane zastoje i poboljšati planiranje servisa</span>
-          </div>
-          <div class="status dev"><span class="s-dot"></span> Status: PoC</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- R&D LAB -->
-  <section id="lab">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>R&amp;D Lab</h2>
-          <p>Full-stack inženjering za visokoperformantne i pouzdane sustave: modeli, MLOps, edge, sigurnost, integracije.</p>
-        </div>
-        <div class="pill">Space-grade mindset • Industry-grade practice</div>
-      </div>
-
-      <div class="highlight">
-        <div>
-          <h3>Izgradnja sustava koji rade stabilno — i kad uvjeti nisu idealni.</h3>
-          <p>
-            Standardiziramo pipeline: prikupljanje → obrada → treniranje → validacija → deployment → monitoring.
-            Fokus: reproducibilnost, audit trail, te jasna odgovornost komponenti.
-          </p>
-          <div style="height:14px"></div>
-          <a class="btn primary" href="#contact">Kontaktiraj tim</a>
-        </div>
-        <div class="mock" aria-hidden="true"></div>
-      </div>
-
-      <div style="height:18px"></div>
-
-      <div class="section-head" style="margin-bottom:10px">
-        <div>
-          <h2 style="font-size:20px; margin:0">Trusted by</h2>
-          <p style="margin-top:6px">Dodaj stvarne logotipe/partnere (za sada su placeholderi).</p>
-        </div>
-        <div class="pill">Partner network</div>
-      </div>
-
-      <div class="logos">
-        <div class="logo-tile">Partner A</div>
-        <div class="logo-tile">Partner B</div>
-        <div class="logo-tile">Partner C</div>
-        <div class="logo-tile">Partner D</div>
-        <div class="logo-tile">Partner E</div>
-        <div class="logo-tile">Partner F</div>
-      </div>
-
-      <div class="section-head" style="margin-top:22px; margin-bottom:10px">
-        <div>
-          <h2 style="font-size:20px; margin:0">Naša postignuća u brojkama</h2>
-          <p style="margin-top:6px">Ovdje stavi realne metrike kad budeš htio javno objaviti.</p>
-        </div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <div class="n">2025</div>
-          <div class="t">Osnovano</div>
-        </div>
-        <div class="stat">
-          <div class="n">30+</div>
-          <div class="t">Podržanih inicijativa / pilot projekata</div>
-        </div>
-        <div class="stat">
-          <div class="n">10+</div>
-          <div class="t">Integriranih OT/IT sustava</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESOURCES / BLOG -->
-  <section id="resources">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2>Blog &amp; News</h2>
-          <p>Najnovije informacije, publikacije i objave (formatirano kao na Protostar primjeru).</p>
-        </div>
-        <a class="btn" href="#contact">View all</a>
-      </div>
-
-      <div class="posts">
-        <article class="post">
-          <div class="thumb" aria-hidden="true"></div>
-          <div class="post-body">
-            <h4>Kako postaviti edge inferenciju u industriji (bez boli)</h4>
-            <div class="meta">by Dry Field Solutions • 22. veljače 2026</div>
-            <p>Praktični pregled: arhitektura, sigurnost, telemetry, rollback i KPI-jevi koji vrijede na terenu.</p>
-          </div>
-        </article>
-
-        <div class="side">
-          <div class="post">
-            <div class="post-body">
-              <h4>Uvod u Energy Optimizer</h4>
-              <div class="meta">16. veljače 2026</div>
-              <p>Zašto peak shaving i planiranje potrošnje donose brze uštede.</p>
-            </div>
-          </div>
-
-          <div class="post">
-            <div class="post-body">
-              <h4>Industrial Vision: najčešće greške u PoC fazi</h4>
-              <div class="meta">5. veljače 2026</div>
-              <p>Od podataka do “realnih” uvjeta: refleksije, prašina, promjena serija i drift.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="height:18px"></div>
-
-      <div class="section-head" style="margin-bottom:12px">
-        <div>
-          <h2 style="font-size:20px; margin:0">Upcoming Events</h2>
-          <p style="margin-top:6px">Stavi stvarne događaje ili ukloni sekciju.</p>
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="event">
-          <b>Embedded / Industry Meetup</b>
-          <span>10–12 ožujka 2026 • Njemačka</span>
-        </div>
-        <div class="event">
-          <b>AI in Manufacturing</b>
-          <span>26–28 svibnja 2026 • Amsterdam</span>
-        </div>
-        <div class="event">
-          <b>Energy Tech Expo</b>
-          <span>17–19 studenog 2026 • Bremen</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="highlight">
-        <div>
-          <h3>Razgovarajmo o tvojem pogonu i KPI-jevima.</h3>
-          <p>
-            Pošalji kratki opis problema (linija/proces, dostupni podaci, cilj i rok).
-            Dobit ćeš prijedlog arhitekture i realan plan implementacije.
-          </p>
-          <div style="height:14px"></div>
-          <a class="btn primary" href="mailto:info@dryfieldsolutions.hr">info@dryfieldsolutions.hr</a>
-          <a class="btn" href="tel:+385000000000" style="margin-left:8px">+385 XX XXX XXXX</a>
-          <div class="mini-note">Zamijeni mail/telefon svojim stvarnim kontaktima.</div>
-        </div>
-        <div class="mock" aria-hidden="true"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand" style="margin-bottom:10px">
-            <span class="logo" aria-hidden="true"></span>
-            <span>Dry Field Solutions</span>
-          </div>
-          <div class="small">
-            Pioniri AI rješenja za industrijsku optimizaciju, automatizaciju i energetsku učinkovitost.
-            Robusno, mjerljivo, spremno za produkciju.
-          </div>
-
-          <div class="newsletter" aria-label="Newsletter">
-            <input type="email" placeholder="Email za newsletter (placeholder)" />
-            <button class="btn primary" type="button" onclick="alert('Demo placeholder — poveži s Mailchimp/Sendinblue.')">Subscribe</button>
-          </div>
-        </div>
-
-        <div>
-          <h5>Proizvodi</h5>
-          <a href="#products">Vision Analytics</a>
-          <a href="#products">Predictive Maintenance</a>
-          <a href="#products">Energy Optimizer</a>
-          <a href="#products">Edge Runtime</a>
-        </div>
-
-        <div>
-          <h5>Tvrtka</h5>
-          <a href="#lab">R&amp;D Lab</a>
-          <a href="#resources">Blog</a>
-          <a href="#contact">Kontakt</a>
-          <a href="#" onclick="alert('Dodaj Privacy Policy stranicu.')">Privacy Policy</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© <span id="y"></span> Dry Field Solutions. All rights reserved.</div>
-        <div>Made with • HTML/CSS (single-file template)</div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
